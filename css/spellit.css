@@ -1,0 +1,67 @@
+footer {
+    margin-top: 15px;
+    background-color: #e8e8e8;
+    font-size: 12px;
+}
+
+a {
+    color: inherit;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 70px;
+}
+
+.splt-wrapper {
+    width: 350px;
+}
+
+.splt-heading {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.splt-subheading {
+    word-wrap: break-word;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.splt-row-float {
+    position: relative;
+}
+
+.splt-row-float:after{
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+}
+
+.splt-float-left {
+    float: left;
+    width: 100px;
+}
+
+.splt-float-right {
+    float: right;
+    width: 250px;
+    text-align: right;
+}
+
+.splt-buttons-row {
+    margin-top: 10px;
+}
+
+.splt-no-margin{
+    margin:0px !important;
+}
+
+.splt-menu {
+    height: 400px;
+    background-image: url("../me.jpg");
+    background-size: cover;
+}
