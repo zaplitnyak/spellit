@@ -1,5 +1,16 @@
 footer {
-    background-color: inactiveborder;
+    margin-top: 15px;
+    background-color: #e8e8e8;
+    font-size: 12px;
+}
+
+a {
+    color: inherit;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 70px;
 }
 
 .splt-wrapper {
@@ -39,4 +50,18 @@ footer {
     float: right;
     width: 250px;
     text-align: right;
+}
+
+.splt-buttons-row {
+    margin-top: 10px;
+}
+
+.splt-no-margin{
+    margin:0px !important;
+}
+
+.splt-menu {
+    height: 400px;
+    background-image: url("../me.jpg");
+    background-size: cover;
 }
