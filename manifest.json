@@ -2,14 +2,21 @@
     "manifest_version": 2,
 
     "name": "Скажи это!",
-    "version": "0.0.3",
+    "version": "0.0.4",
+    "version_name": "0.0.4 open beta",
     "author": "Andrew Zaplitnyak",
     "description": "Мы преобразуем ваш текст в Google Translate речь!",
 
+
     "icons": {
         "16": "16x16.png",
-        "48": "48x48.png"
+        "48": "48x48.png",
+        "128": "128x128.png"
     },
+
+    "permissions": [
+        "storage"
+    ],
 
     "browser_action": {
         "default_title": "Cкажи мне это",

@@ -1,5 +1,5 @@
 footer {
-    margin-top: 15px;
+    margin-top: 10px;
     background-color: #e8e8e8;
     font-size: 12px;
 }
@@ -11,6 +11,12 @@ a {
 textarea {
     resize: vertical;
     min-height: 70px;
+}
+
+#recent-list {
+    height: 280px;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .splt-wrapper {
@@ -60,8 +66,14 @@ textarea {
     margin:0px !important;
 }
 
-.splt-menu {
-    height: 400px;
-    background-image: url("../me.jpg");
-    background-size: cover;
+.splt-about {
+    height: 310px; /* height of all possible element on mainpage */
+}
+
+.splt-success {
+    margin: 10px 0 0 0;
+}
+
+.splt-tenlast {
+    height: 310px; /* height of all possible element on mainpage */
 }
