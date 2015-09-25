@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Скажи это!",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Мы преобразуем ваш текст в Google Translate речь!", 
+    "description":"The description of the application, displayed in the web store."
+  }
+}
