@@ -1,10 +1,16 @@
 {
   "appName": {
-    "message": "Say It!",
+    "message": "Spell It!",
     "description": "The title of the application, displayed in the web store."
   },
-  "appDesc": {
-    "message": "We transform your text into Google Translate voice!", 
+  "appShortName": {
+    "message": "Spell It!"
+  },
+  "appDescription": {
+    "message": "We transform your text into Google Translate voice!",
     "description":"The description of the application, displayed in the web store."
+  },
+  "defaultTitle": {
+    "message": "Just Spell It, babe!"
   }
 }

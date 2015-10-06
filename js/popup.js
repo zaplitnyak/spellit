@@ -5,7 +5,6 @@
         $startButton = $("#start-button"),
         $stopButton = $("#stop-button"),
         text = getUrlParameterByName("text");
-
     $(function() {
         $playBackAudio.prop("src", "");
 
@@ -109,3 +108,13 @@
     }
 
 })(window.jQuery);
+
+/**
+ * Yii style translation:)
+ * @param string name
+ *
+ * @return string
+ */
+function t(name){
+    return chrome.i18n.getMessage(name);
+}

@@ -4,13 +4,13 @@
     "default_locale": "ru",
 
     "name": "__MSG_appName__",
-    "short_name": "Скажи это!",
+    "short_name": "__MSG_appShortName__",
 
-    "version": "0.0.5",
-    "version_name": "0.0.5 open beta",
+    "version": "0.0.6",
+    "version_name": "0.0.6 redisign",
 
     "author": "Andrew Zaplitnyak",
-    "description": "__MSG_appDesc__",
+    "description": "__MSG_appDescription__",
 
     "icons": {
         "16": "16x16.png",
@@ -23,7 +23,7 @@
     ],
 
     "browser_action": {
-        "default_title": "Cкажи мне это",
+        "default_title": "__MSG_defaultTitle__",
         "default_icon": "48x48.png",
         "default_popup": "popup.html"
     }
