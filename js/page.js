@@ -30,6 +30,15 @@ var BasePage = (function(){
     BasePage.prototype.t = function (name) {
         return chrome.i18n.getMessage(name);
     }
+
+    BasePage.prototype.getUrlParameterByName = function (name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(window.location.search);
+
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
     
     return BasePage;
 }());

@@ -1,19 +1,29 @@
-;(function($) {
+var PopupPage = (function($){
     var $messageTextArea = $('#message'),
         $spltForm = $("#spellItForm"),
         $playBackAudio = $("audio#playBack"),
         $startButton = $("#start-button"),
         $stopButton = $("#stop-button"),
-        text = getUrlParameterByName("text");
-    $(function() {
+        self,
+        text;
+
+    function PopupPage() {
+       self = this,
+       self.init();
+       text = this.getUrlParameterByName("text");
+    }
+
+    PopupPage.prototype = new BasePage();
+
+    PopupPage.prototype.init = function () {
         $playBackAudio.prop("src", "");
 
         $playBackAudio.on("ended", function () {
-            stopPlayback();
+            self.stopPlayback();
         });
 
         $stopButton.click(function () {
-            stopPlayback();
+            self.stopPlayback();
         });
 
         $messageTextArea.focus(function() {
@@ -26,7 +36,7 @@
         });
 
         $("#repeat-button").click(function() {
-            startPlayback();
+            self.startPlayback();
         });
 
         $spltForm.submit(function(event) {
@@ -44,13 +54,13 @@
 
             var generatedUrl = secretUrl + "&textlen=" + message.length + "&q=" + encodeURIComponent(message);
             $playBackAudio.prop('src', generatedUrl);
-            startPlayback();
+            self.startPlayback();
             var resultMessage = "<strong>Бесплатная ссылка для прослушивания: </strong><br/>" +
                     "<a target=\"_blank\" href=\"" + generatedUrl + "\">" + generatedUrl + "</a>";
-            successNotification(resultMessage);
+            self.successNotification(resultMessage);
             $("#download-button").prop("href", generatedUrl);
             $("#download-button").prop("download", message.substring(0, 10) + ".mp3");
-            saveToRecentVoices(message);
+            self.saveToRecentVoices(message);
         });
 
         if (text) {
@@ -59,21 +69,25 @@
             var currentState = window.history.state;
             window.history.replaceState(currentState, "", "/popup.html");
         }
-    });
 
-    //TODO:Implement jQuery Templates
-    function successNotification(message) {
-        $('#success').html("<div class='alert alert-success splt-success'>");
-        $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-        $('#success > .alert-success')
-            .append(message);
-        $('#success > .alert-success')
-            .append('</div>');
-        $('#success').show();
     }
 
-    function saveToRecentVoices(message) {
+    PopupPage.prototype.startPlayback = function () {
+        $playBackAudio.trigger("play");
+        $startButton.hide();
+        $stopButton.show();
+
+    }
+
+    PopupPage.prototype.stopPlayback = function () {
+        $playBackAudio.trigger("pause");
+        $playBackAudio.prop("currentTime", 0);
+        $stopButton.hide();
+        $startButton.show();
+    }
+
+    
+    PopupPage.prototype.saveToRecentVoices = function (message) {
         chrome.storage.sync.get("recentVoices", function (data) {
             var recentVoices = (Object.keys(data).length) ? data.recentVoices : [];
 
@@ -86,35 +100,20 @@
         });
     }
 
-    function getUrlParameterByName(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(window.location.search);
-
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    //TODO:Implement jQuery Templates
+    PopupPage.prototype.successNotification = function (message) {
+        $('#success').html("<div class='alert alert-success splt-success'>");
+        $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+            .append("</button>");
+        $('#success > .alert-success')
+            .append(message);
+        $('#success > .alert-success')
+            .append('</div>');
+        $('#success').show();
     }
 
-    function startPlayback() {
-        $playBackAudio.trigger("play");
-        $startButton.hide();
-        $stopButton.show();
-    }
+    return PopupPage;
+}(window.jQuery));
 
-    function stopPlayback() {
-        $playBackAudio.trigger("pause");
-        $playBackAudio.prop("currentTime", 0);
-        $stopButton.hide();
-        $startButton.show();
-    }
+var pagePopup = new PopupPage();
 
-})(window.jQuery);
-
-/**
- * Yii style translation:)
- * @param string name
- *
- * @return string
- */
-function t(name){
-    return chrome.i18n.getMessage(name);
-}
