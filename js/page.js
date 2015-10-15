@@ -39,7 +39,39 @@ var BasePage = (function(){
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
-    
     return BasePage;
 }());
 
+var jQueryPage = (function () {
+    jQueryPage.prototype = new BasePage();
+
+    var self;
+
+    /**
+     * @returns {undefined}
+     */
+    function jQueryPage() {
+        if (window.jQuery === undefined) {
+            //TODO: Make Exceptions classes in exceptions.js
+            throw new jQueryException("jQuery undefined! Please load jQuery ver. >=1.9");
+        }
+
+        self = this;
+    }
+
+    /**
+     * @param array[jQuery]|jQuery elements
+     */
+    jQueryPage.prototype.translate = function (elements) {
+        var $elements = (elements instanceof Array) ? elements : [elements],
+            translation = '';
+        for (var index in $elements) {
+            translation = self.t($elements[index].data("tName"));
+            if (translation) {
+                $elements[index].text(translation);
+            }
+        }
+    };
+
+    return jQueryPage;
+}());

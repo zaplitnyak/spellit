@@ -1,4 +1,6 @@
 var PopupPage = (function($){
+    PopupPage.prototype = new jQueryPage();
+
     var $messageTextArea = $('#message'),
         $spltForm = $("#spellItForm"),
         $playBackAudio = $("audio#playBack"),
@@ -7,14 +9,17 @@ var PopupPage = (function($){
         self,
         text;
 
+    /**
+     * Constructor
+     */
     function PopupPage() {
-       self = this,
+       self = this;
+       text = self.getUrlParameterByName("text");
+
        self.init();
-       text = this.getUrlParameterByName("text");
     }
 
-    PopupPage.prototype = new BasePage();
-
+    //TODO: do smth with this temporary code
     PopupPage.prototype.init = function () {
         $playBackAudio.prop("src", "");
 
@@ -69,6 +74,8 @@ var PopupPage = (function($){
             var currentState = window.history.state;
             window.history.replaceState(currentState, "", "/popup.html");
         }
+
+        self.translate($("[data-t-name]"));
 
     }
 

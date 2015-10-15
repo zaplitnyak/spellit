@@ -21,6 +21,7 @@ textarea {
 
 #message {
     height: 230px;
+    max-height: 455px;
 }
 
 .splt-wrapper {

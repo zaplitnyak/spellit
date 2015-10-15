@@ -12,5 +12,8 @@
   },
   "defaultTitle": {
     "message": "Просто скажи это!"
+  },
+  "popupTitle": {
+    "message": "Скажи это!"
   }
 }

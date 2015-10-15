@@ -12,5 +12,8 @@
   },
   "defaultTitle": {
     "message": "Just Spell It, babe!"
+  },
+  "popupTitle": {
+    "message": "Spell It!"
   }
 }
