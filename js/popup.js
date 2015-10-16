@@ -1,31 +1,38 @@
 var PopupPage = (function($){
     PopupPage.prototype = new jQueryPage();
 
+    /**
+     * @var PopupPage Represent <this> in callback functions
+     */
+    var self;
+
+    /**
+     * @type string
+     */
+    var message;
+
+    /**
+     * @vars jQuery variables
+     */
     var $messageTextArea = $('#message'),
         $spltForm = $("#spellItForm"),
         $playBackAudio = $("audio#playBack"),
         $startButton = $("#start-button"),
-        $stopButton = $("#stop-button"),
-        self,
-        text;
+        $stopButton = $("#stop-button");
 
     /**
      * Constructor
      */
-    function PopupPage() {
+    function PopupPage(selectors) {
        self = this;
-       text = self.getUrlParameterByName("text");
+       message = self.getUrlParameterByName("text");
 
-       self.init();
+       self.init(selectors);
     }
 
     //TODO: do smth with this temporary code
-    PopupPage.prototype.init = function () {
-        $playBackAudio.prop("src", "");
-
-        $playBackAudio.on("ended", function () {
-            self.stopPlayback();
-        });
+    PopupPage.prototype.init = function (selectors) {
+        $playBackAudio.trigger("clear");
 
         $stopButton.click(function () {
             self.stopPlayback();
@@ -68,8 +75,9 @@ var PopupPage = (function($){
             self.saveToRecentVoices(message);
         });
 
-        if (text) {
-            $messageTextArea.text(text);
+        if (self.message) {
+            //TODO: It must be converted ot a function
+            $messageTextArea.text(message);
             $spltForm.submit();
             var currentState = window.history.state;
             window.history.replaceState(currentState, "", "/popup.html");
@@ -79,14 +87,23 @@ var PopupPage = (function($){
 
     }
 
-    PopupPage.prototype.startPlayback = function () {
+    var playBackAudioEvents = {
+        clear: function () {
+            this.getElement().prop("src", "");
+            stopPlayback()
+        },
+        ended: function () {
+            self.stopPlayback();
+        }
+    };
+
+    function startPlayback() {
         $playBackAudio.trigger("play");
         $startButton.hide();
         $stopButton.show();
-
     }
 
-    PopupPage.prototype.stopPlayback = function () {
+    function stopPlayback() {
         $playBackAudio.trigger("pause");
         $playBackAudio.prop("currentTime", 0);
         $stopButton.hide();
@@ -122,5 +139,6 @@ var PopupPage = (function($){
     return PopupPage;
 }(window.jQuery));
 
-var pagePopup = new PopupPage();
-
+var pagePopup = new PopupPage({
+    
+});

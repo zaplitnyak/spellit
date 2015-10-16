@@ -24,6 +24,14 @@ textarea {
     max-height: 455px;
 }
 
+#start-button {
+    width: 90px;
+}
+
+#stop-button {
+    width: 90px;
+}
+
 .splt-wrapper {
     width: 350px;
     height: 310px;

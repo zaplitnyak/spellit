@@ -15,5 +15,35 @@
   },
   "popupTitle": {
     "message": "Spell It!"
+  },
+  "aboutTitle": {
+    "message": "A boat"
+  },
+  "recentTitle": {
+    "message": "Recent"
+  },
+  "topTitle": {
+    "message": "Top'чик"
+  },
+  "menuRecent": {
+    "message": "Recent"
+  },
+  "menuTop": {
+    "message": "Top"
+  },
+  "buttonBack": {
+    "message": "Back to the future!"
+  },
+  "buttonStart": {
+    "message": "Play"
+  },
+  "buttonStop": {
+    "message": "Stop"
+  },
+  "buttonRepeat": {
+    "message": "Repeat"
+  },
+  "buttonDownload": {
+    "message": "Download"
   }
 }

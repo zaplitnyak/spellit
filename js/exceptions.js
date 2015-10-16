@@ -28,3 +28,13 @@ var jQueryException = (function () {
 
     return jQueryException;
 }());
+
+var NullException = (function () {
+    NullException.prototype = new CommonException();
+
+    function NullException(message) {
+        CommonException.apply(this, [message, NullException.name]);
+    }
+
+    return NullException;
+}());

@@ -15,5 +15,35 @@
   },
   "popupTitle": {
     "message": "Скажи это!"
+  },
+    "aboutTitle": {
+    "message": "О нас"
+  },
+  "recentTitle": {
+    "message": "Надысь"
+  },
+  "topTitle": {
+    "message": "Топчик"
+  },
+  "menuRecent": {
+    "message": "Давеча"
+  },
+  "menuTop": {
+    "message": "Топчик"
+  },
+  "buttonBack": {
+    "message": "Метнуться обратно"
+  },
+  "buttonStart": {
+    "message": "Озвучить!"
+  },
+  "buttonStop": {
+    "message": "Прекратить!"
+  },
+  "buttonRepeat": {
+    "message": "Повторить"
+  },
+  "butttonDownload": {
+    "message": "Сохранить на пямать"
   }
 }
