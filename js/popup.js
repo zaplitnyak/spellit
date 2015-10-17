@@ -16,9 +16,11 @@ var PopupPage = (function($){
      */
     var $messageTextArea = $('#message'),
         $spltForm = $("#spellItForm"),
-        $playBackAudio = $("audio#playBack"),
-        $startButton = $("#start-button"),
-        $stopButton = $("#stop-button");
+        $playBackAudio,
+        $startButton,
+        $stopButton,
+        $repeatButton,
+        $appNameHeader;
 
     /**
      * Constructor
@@ -32,23 +34,17 @@ var PopupPage = (function($){
 
     //TODO: do smth with this temporary code
     PopupPage.prototype.init = function (selectors) {
-        $playBackAudio.trigger("clear");
+        $playBackAudio = new jQueryElement(playBackAudioConfig);
+        $stopButton = new jQueryElement(stopButtonConfig);
+        $startButton = new jQueryElement(startButtonConfig);
+        $repeatButton = new jQueryElement(repeatButtonConfig);
+        $appNameHeader = new jQueryElement(appNameHeaderConfig);
 
-        $stopButton.click(function () {
-            self.stopPlayback();
-        });
+        $playBackAudio.getElement().trigger("clearSrc");
 
         $messageTextArea.focus(function() {
             $('#success').hide();
             $(".help-block").hide();
-        });
-
-        $("p.splt-heading").click(function() {
-            window.location = "/about.html"
-        });
-
-        $("#repeat-button").click(function() {
-            self.startPlayback();
         });
 
         $spltForm.submit(function(event) {
@@ -65,8 +61,8 @@ var PopupPage = (function($){
             }
 
             var generatedUrl = secretUrl + "&textlen=" + message.length + "&q=" + encodeURIComponent(message);
-            $playBackAudio.prop('src', generatedUrl);
-            self.startPlayback();
+            $playBackAudio.getElement().prop('src', generatedUrl);
+            startPlayback();
             var resultMessage = "<strong>Бесплатная ссылка для прослушивания: </strong><br/>" +
                     "<a target=\"_blank\" href=\"" + generatedUrl + "\">" + generatedUrl + "</a>";
             self.successNotification(resultMessage);
@@ -87,27 +83,62 @@ var PopupPage = (function($){
 
     }
 
-    var playBackAudioEvents = {
-        clear: function () {
-            this.getElement().prop("src", "");
-            stopPlayback()
-        },
-        ended: function () {
-            self.stopPlayback();
+    var playBackAudioConfig = {
+        selector: "audio#playBack",
+        events: {
+            clearSrc: function () {
+                console.log(this);
+                this.getElement().prop("src", "ololol");
+                stopPlayback();
+            },
+            ended: function () {
+                stopPlayback();
+            }
+        }
+    };
+
+    var stopButtonConfig = {
+        selector: "#stop-button",
+        events: {
+            click: function () {
+                stopPlayback();
+            }
+        }
+    };
+
+    var startButtonConfig = {
+        selector: "#start-button"
+    };
+
+    var repeatButtonConfig = {
+        selector: "#repeat-button",
+        events: {
+            click: function () {
+                startPlayback();
+            }
+        }
+    };
+
+    var appNameHeaderConfig = {
+        selector: "p.splt-heading",
+        events: {
+            click: function () {
+                window.location = "/about.html"
+            }
         }
     };
 
     function startPlayback() {
-        $playBackAudio.trigger("play");
-        $startButton.hide();
-        $stopButton.show();
+        $playBackAudio.getElement().trigger("play");
+        $startButton.getElement().hide();
+        $stopButton.getElement().show();
     }
 
     function stopPlayback() {
-        $playBackAudio.trigger("pause");
-        $playBackAudio.prop("currentTime", 0);
-        $stopButton.hide();
-        $startButton.show();
+        $playBackAudio.getElement().trigger("pause");
+        $playBackAudio.getElement().prop("currentTime", 0);
+        $stopButton.getElement().hide();
+        $startButton.getElement().show();
     }
 
     

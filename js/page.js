@@ -121,7 +121,7 @@ var jQueryElement = (function ($) {
     /**
      * @type PlainObject
      */
-    var events
+    var events;
 
     /**
      * Constructor
@@ -133,16 +133,18 @@ var jQueryElement = (function ($) {
             //TODO: Make Exceptions classes in exceptions.js|||DULICATED
             throw new jQueryException("jQuery undefined! Please load jQuery ver. >=1.9");
         }
-
+        if (!config) {
+            throw new NullException("Element config can't be empty! It must contain selector at least!");
+        }
         self = this;
 
-        selector = (typeof config === "string") ? config : config.selector;
-        if (!selector) {
+        self.selector = (typeof config === "string") ? config : config.selector;
+        if (!self.selector) {
             throw new NullException("Element selector can't be empty! Please, attend: http://api.jquery.com/jquery/#jQuery1");
         }
 
-        $element = $(selector);
-        events = (config.events !== undefined) ? config.events : {};
+        self.$element = $(self.selector);
+        self.events = (config.events !== undefined) ? config.events : {};
 
         self.init();
     }
@@ -156,18 +158,18 @@ var jQueryElement = (function ($) {
      * @returns jQuery
      */
     jQueryElement.prototype.getElement = function () {
-        if ($element.length === 0) {
-            throw new NullException("Eleemnt not found! Selector: " + selector);
+        if (self.$element.length === 0) {
+            throw new NullException("Element not found! Selector: " + self.selector);
         }
 
-        return $element;
+        return self.$element;
     }
 
     /**
      * @returns string
      */
     jQueryElement.prototype.getSelector = function () {
-        return selector;
+        return self.selector;
     }
 
     return jQueryElement;
