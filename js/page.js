@@ -136,33 +136,32 @@ var jQueryElement = (function ($) {
         if (!config) {
             throw new NullException("Element config can't be empty! It must contain selector at least!");
         }
-        self = this;
 
-        self.selector = (typeof config === "string") ? config : config.selector;
-        if (!self.selector) {
+        this.selector = (typeof config === "string") ? config : config.selector;
+        if (!this.selector) {
             throw new NullException("Element selector can't be empty! Please, attend: http://api.jquery.com/jquery/#jQuery1");
         }
 
-        self.$element = $(self.selector);
-        self.events = (config.events !== undefined) ? config.events : {};
+        this.$element = $(this.selector);
+        this.events = (config.events !== undefined) ? config.events : {};
 
-        self.init();
+        this.init();
     }
 
     jQueryElement.prototype.init = function (events) {
-        self.getElement().on(self.events);
-        self.getElement().on(events);
+        this.getElement().on(this.events);
+        this.getElement().on(events);
     }
 
     /**
      * @returns jQuery
      */
     jQueryElement.prototype.getElement = function () {
-        if (self.$element.length === 0) {
-            throw new NullException("Element not found! Selector: " + self.selector);
+        if (this.$element.length === 0) {
+            throw new NullException("Element not found! Selector: " + this.selector);
         }
 
-        return self.$element;
+        return $(this.selector);
     }
 
     /**

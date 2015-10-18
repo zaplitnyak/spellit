@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <audio id="playBack"></audio>
+    <audio id="playBack" controls></audio>
 
     <footer>
         <div>
@@ -57,9 +57,19 @@
             </div>
         </div>
     </footer>
+    <!-- JS Templates START -->
+    <script id="successMessageTmpl" type="text/x-jsrender">
+        <div class='alert alert-success splt-success'>
+            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+            {{>message}}
+        </div>
+    </script>
+    <!-- JS Templates END -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+    <!-- JsRender -->
+    <script src="js/jsrender.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <!-- Custom js -->
