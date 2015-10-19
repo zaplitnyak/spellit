@@ -113,7 +113,7 @@ var PopupPage = (function($){
                 event.preventDefault();
 
                 var secretUrl = "https://translate.google.com.ua/translate_tts?ie=UTF-8&tl=ru&total=1&idx=0&client=t",
-                    userText = self.$messageTextArea.getElement().text();
+                    userText = self.$messageTextArea.getElement().val();
                 if (!userText) {
                     //TODO:Implement jQuery Templates
                     $(".help-block").text($("textarea#message").data("validationRequiredMessage"));
@@ -121,10 +121,8 @@ var PopupPage = (function($){
 
                     return false;
                 }
-                console.log(self.$messageTextArea.getElement());
                 var generatedUrl = secretUrl + "&textlen=" + userText.length + "&q=" + encodeURIComponent(userText);
                 self.$playBackAudio.getElement().prop('src', generatedUrl);
-                console.log(self.$playBackAudio.getElement());
                 startPlayback();
                 var resultMessage = "<strong>Бесплатная ссылка для прослушивания: </strong><br/>" +
                         "<a target=\"_blank\" href=\"" + generatedUrl + "\">" + generatedUrl + "</a>";
@@ -169,9 +167,13 @@ var PopupPage = (function($){
         });
     }
 
+    //TODO: Implement JS templater
     PopupPage.prototype.successNotification = function (message) {
-        var content = $("#successMessageTemplate").render(message);
-        $('#success').html(content);
+        var data = "<div class='alert alert-success splt-success'>\n\
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>"
+                    + message +
+                    "</div>";
+        $('#success').html(data);
         $('#success').show();
     }
 

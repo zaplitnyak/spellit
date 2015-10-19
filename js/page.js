@@ -136,16 +136,17 @@ var jQueryElement = (function ($) {
         if (!config) {
             throw new NullException("Element config can't be empty! It must contain selector at least!");
         }
+        self = this;
 
-        this.selector = (typeof config === "string") ? config : config.selector;
-        if (!this.selector) {
+        self.selector = (typeof config === "string") ? config : config.selector;
+        if (!self.selector) {
             throw new NullException("Element selector can't be empty! Please, attend: http://api.jquery.com/jquery/#jQuery1");
         }
 
-        this.$element = $(this.selector);
-        this.events = (config.events !== undefined) ? config.events : {};
+        self.$element = $(self.selector);
+        self.events = (config.events !== undefined) ? config.events : {};
 
-        this.init();
+        self.init();
     }
 
     jQueryElement.prototype.init = function (events) {
@@ -161,14 +162,14 @@ var jQueryElement = (function ($) {
             throw new NullException("Element not found! Selector: " + this.selector);
         }
 
-        return $(this.selector);
+        return this.$element;
     }
 
     /**
      * @returns string
      */
     jQueryElement.prototype.getSelector = function () {
-        return self.selector;
+        return this.selector;
     }
 
     return jQueryElement;
