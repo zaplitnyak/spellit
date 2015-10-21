@@ -42,14 +42,14 @@ var PopupPage = (function($){
         self.$spltForm = new jQueryElement(spltFormConfig);
         self.$messageTextArea = new jQueryElement(textAreaConfig);
 
+        self.translate($("[data-t-name]"));
         self.$playBackAudio.getElement().trigger("clear");
+        self.$messageTextArea.getElement().empty();
+        self.$messageTextArea.getElement().focus();
 
         if (self.message) {
             restoreFromRecent(self.message);
         }
-
-        self.translate($("[data-t-name]"));
-
     }
 
     var playBackAudioConfig = {
@@ -99,9 +99,15 @@ var PopupPage = (function($){
     var textAreaConfig = {
         selector: "#message",
         events: {
-            focus: function() {
+            focus: function () {
                 $('#success').hide();
                 $(".help-block").hide();
+            },
+            keydown: function (event) {
+                $(".help-block").hide();/* temp solution */
+                if (event.keyCode === 13 && event.ctrlKey) {
+                    self.$spltForm && self.$spltForm.getElement().submit();
+                }
             }
         }
     };
@@ -112,11 +118,10 @@ var PopupPage = (function($){
             submit: function(event) {
                 event.preventDefault();
 
-                var secretUrl = "https://translate.google.com.ua/translate_tts?ie=UTF-8&tl=ru&total=1&idx=0&client=t",
+                var secretUrl = "http://translate.google.com.ua/translate_tts?ie=UTF-8&tl=ru&total=1&idx=0&client=t",
                     userText = self.$messageTextArea.getElement().val();
                 if (!userText) {
-                    //TODO:Implement jQuery Templates
-                    $(".help-block").text($("textarea#message").data("validationRequiredMessage"));
+                    $(".help-block").text(self.t("formErrorEmpty"));
                     $(".help-block").show();
 
                     return false;
@@ -180,6 +185,4 @@ var PopupPage = (function($){
     return PopupPage;
 }(window.jQuery));
 
-var pagePopup = new PopupPage({
-    
-});
+var pagePopup = new PopupPage();

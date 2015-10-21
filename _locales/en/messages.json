@@ -45,5 +45,11 @@
   },
   "buttonDownload": {
     "message": "Download"
+  },
+  "textAreaMessage": {
+      "message": "Your message, sir!"
+  },
+  "formErrorEmpty": {
+      "message": "IMHO, you need to write a message:)"
   }
 }

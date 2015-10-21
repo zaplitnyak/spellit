@@ -96,6 +96,50 @@ var jQueryPage = (function ($) {
 }(window.jQuery));
 
 /**
+ * Class SubordinatePage
+ *
+ * @author Andrew Zaplitnyak <zaplitnyak@gmail.com>
+ *
+ * @type Function|page_L105.SubordinatePage
+ */
+var SubordinatePage = (function ($) {
+    SubordinatePage.prototype = new jQueryPage();
+
+    /**
+     * @type SubordinatePage Represent this in callbacks
+     */
+    var self;
+    
+    var $buttonBack;
+
+    /**
+     * Constructor
+     */
+    function SubordinatePage(selectors) {
+        if (window.jQuery === undefined) {
+            //TODO: Make Exceptions classes in exceptions.js
+            throw new jQueryException("jQuery undefined! Please load jQuery ver. >=1.9");
+        }
+
+        self = this;
+        if (selectors && selectors.buttonBack) {
+            buttonBackConfig.selector = selectors.buttonBack;
+            self.$buttonBack = new jQueryElement(buttonBackConfig);
+        }
+    }
+    
+    var buttonBackConfig = {
+        events: {
+            click: function () {
+                window.history.back();
+            }
+        }
+    }
+
+    return SubordinatePage;
+}(window.jQuery));
+
+/**
  * Class jQueryElement
  *
  * @author Andrew Zaplitnyak <zaplitnyak@gmail.com>

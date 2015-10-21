@@ -45,5 +45,11 @@
   },
   "butttonDownload": {
     "message": "Сохранить на пямать"
+  },
+  "textAreaMessage": {
+      "message": "Ваше сообщение*"
+  },
+  "formErrorEmpty": {
+      "message": "Чтобы что-то заработало, нужно что-то написать:)"
   }
 }
