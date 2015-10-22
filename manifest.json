@@ -6,8 +6,8 @@
     "name": "__MSG_appName__",
     "short_name": "__MSG_appShortName__",
 
-    "version": "0.0.6",
-    "version_name": "0.0.6 redisign",
+    "version": "0.0.9",
+    "version_name": "0.0.9 riborn",
 
     "author": "Andrew Zaplitnyak",
     "description": "__MSG_appDescription__",
