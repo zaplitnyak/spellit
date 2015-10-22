@@ -38,3 +38,13 @@ var NullException = (function () {
 
     return NullException;
 }());
+
+var ChromeStorageException = (function () {
+    ChromeStorageException.prototype = new CommonException();
+
+    function ChromeStorageException(message) {
+        CommonException.apply(this, [message, ChromeStorageException.name]);
+    }
+
+    return ChromeStorageException;
+}());

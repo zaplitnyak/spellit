@@ -9,19 +9,12 @@
 
     <!-- Custom CSS -->
     <link href="css/spellit.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
 </head>
 <body class="splt-wrapper">
     <div class="container-fluid splt-wrapper">
         <div class="row splt-heading">
-            <span id="back-button" title="Назад" class="col-md-3 glyphicon glyphicon-arrow-left"></span>
-            Твои недавние творения:
+            <span id="back-button" title="" class="col-md-3 glyphicon glyphicon-arrow-left" data-t-name="buttonBack"></span>
+            <span data-t-name="recentTitle"></span>:
         </div>
         <div class="row">
             <div id="recent-list" class="list-group"></div>
@@ -44,6 +37,8 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <!-- Custom js -->
+    <script src="js/exceptions.js"></script>
+    <script src="js/page.js"></script>
     <script src="js/tenlast.js"></script>
 </body>
 

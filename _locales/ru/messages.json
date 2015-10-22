@@ -35,21 +35,30 @@
     "message": "Метнуться обратно"
   },
   "buttonStart": {
-    "message": "Озвучить!"
+    "message": "Пуск!"
   },
   "buttonStop": {
-    "message": "Прекратить!"
+    "message": "Стопе!"
   },
   "buttonRepeat": {
     "message": "Повторить"
   },
   "butttonDownload": {
-    "message": "Сохранить на пямать"
+    "message": "Сохранить"
   },
   "textAreaMessage": {
       "message": "Ваше сообщение*"
   },
   "formErrorEmpty": {
       "message": "Чтобы что-то заработало, нужно что-то написать:)"
+  },
+  "pageAboutText": {
+      "message": "<p class='text-justify text-muted'>В случае крайней или при иной необходимости пишите мне.</p><p class='text-justify text-primary'>А если Вы хотите оформить задачу на гитхабе милости прошу:</p><span class='text-capitalize text-warning'>---></span><a href='https://github.com/zaplitnyak/spellit/issues' target='blank'>Запилить задачу!</a><span class='text-capitalize text-warning'><---</span>"
+  },
+  "pageTopText": {
+      "message": "Я пока не готова! Милый, еще пять минуточеk:*"
+  },
+  "playBackUrlMessage": {
+      "message": "Бесплатная ссылка для прослушивания"
   }
 }

@@ -128,8 +128,9 @@ var PopupPage = (function($){
                 }
                 var generatedUrl = secretUrl + "&textlen=" + userText.length + "&q=" + encodeURIComponent(userText);
                 self.$playBackAudio.getElement().prop('src', generatedUrl);
+                self.$repeatButton.getElement().prop('disabled', false);
                 startPlayback();
-                var resultMessage = "<strong>Бесплатная ссылка для прослушивания: </strong><br/>" +
+                var resultMessage = "<strong>" + self.t("playBackUrlMessage") + ": </strong><br/>" +
                         "<a target=\"_blank\" href=\"" + generatedUrl + "\">" + generatedUrl + "</a>";
                 self.successNotification(resultMessage);
                 $("#download-button").prop("href", generatedUrl);
@@ -172,10 +173,10 @@ var PopupPage = (function($){
         });
     }
 
-    //TODO: Implement JS templater
+    //TODO: Implement JS templater UPD: CRETE OR FIND OTHER SOLUTION. jQ templaters use unsafe eval:(
     PopupPage.prototype.successNotification = function (message) {
         var data = "<div class='alert alert-success splt-success'>\n\
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>"
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>"
                     + message +
                     "</div>";
         $('#success').html(data);

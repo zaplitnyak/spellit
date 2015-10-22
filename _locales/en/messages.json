@@ -51,5 +51,14 @@
   },
   "formErrorEmpty": {
       "message": "IMHO, you need to write a message:)"
+  },
+  "pageAboutText": {
+      "message": "<p class='text-justify text-muted'>In case of emergency or for any other reason - email me.</p><p class='text-justify text-primary'>If you want to report some issues on GitHub - make yourself at home:</p><span class='text-capitalize text-warning'>---></span><a href='https://github.com/zaplitnyak/spellit/issues' target='blank'>Click rigth here!</a><span class='text-capitalize text-warning'><---</span>"
+  },
+  "pageTopText": {
+      "message": "I'm not ready yet! Honey, could you wait a little bit more:*"
+  },
+  "playBackUrlMessage": {
+      "message": "Free playback URL"
   }
 }
