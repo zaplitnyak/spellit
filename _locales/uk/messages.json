@@ -1,0 +1,64 @@
+{
+  "appName": {
+    "message": "Промов це!",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appShortName": {
+    "message": "Промов це!"
+  },
+  "appDescription": {
+    "message": "Ми змушуємо Google Translate вимовити те, що Ви написали!",
+    "description":"The description of the application, displayed in the web store."
+  },
+  "defaultTitle": {
+    "message": "Вимовити дуже просто!"
+  },
+  "popupTitle": {
+    "message": "Промов це!"
+  },
+    "aboutTitle": {
+    "message": "Про мене"
+  },
+  "recentTitle": {
+    "message": "Нещодавні творіння"
+  },
+  "topTitle": {
+    "message": "Топчик"
+  },
+  "menuRecent": {
+    "message": "Нещодавні"
+  },
+  "menuTop": {
+    "message": "Топчик"
+  },
+  "buttonBack": {
+    "message": "Кабанчиком назад"
+  },
+  "buttonStart": {
+    "message": "Пуск!"
+  },
+  "buttonStop": {
+    "message": "Стривай!"
+  },
+  "buttonRepeat": {
+    "message": "Заново"
+  },
+  "butttonDownload": {
+    "message": "Зберегти"
+  },
+  "textAreaMessage": {
+      "message": "Тут має бути повідомлення"
+  },
+  "formErrorEmpty": {
+      "message": "Трошки вище треба хоч трошки написати:)"
+  },
+  "pageAboutText": {
+      "message": "<p class='text-justify text-muted'>У випадку катастрофи - витягнути шнур і видавити скло. При інших випадкових миттєвостях - пишіть мені.</p><p class='text-justify text-primary'>Коли є бажання та/або натхнення замутити задачу на ГітХабі:</p><span class='text-capitalize text-warning'>---></span><a href='https://github.com/zaplitnyak/spellit/issues' target='blank'>Тицяти прямо таки сюди!</a><span class='text-capitalize text-warning'><---</span>"
+  },
+  "pageTopText": {
+      "message": "Ще п’ять хвилиночок, коханий! Мені одягнути синє чи золотаве плаття?:)"
+  },
+  "playBackUrlMessage": {
+      "message": "Гіпер-супер-пуперпосилання для прослуховування"
+  }
+}

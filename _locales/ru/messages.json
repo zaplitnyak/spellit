@@ -1,0 +1,64 @@
+{
+  "appName": {
+    "message": "Скажи это!",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appShortName": {
+    "message": "Скажи это!"
+  },
+  "appDescription": {
+    "message": "Мы преобразуем ваш текст в Google Translate речь!",
+    "description":"The description of the application, displayed in the web store."
+  },
+  "defaultTitle": {
+    "message": "Просто скажи это!"
+  },
+  "popupTitle": {
+    "message": "Скажи это!"
+  },
+    "aboutTitle": {
+    "message": "О нас"
+  },
+  "recentTitle": {
+    "message": "Надысь"
+  },
+  "topTitle": {
+    "message": "Топчик"
+  },
+  "menuRecent": {
+    "message": "Давеча"
+  },
+  "menuTop": {
+    "message": "Топчик"
+  },
+  "buttonBack": {
+    "message": "Метнуться обратно"
+  },
+  "buttonStart": {
+    "message": "Пуск!"
+  },
+  "buttonStop": {
+    "message": "Стопе!"
+  },
+  "buttonRepeat": {
+    "message": "Повторить"
+  },
+  "butttonDownload": {
+    "message": "Сохранить"
+  },
+  "textAreaMessage": {
+      "message": "Ваше сообщение*"
+  },
+  "formErrorEmpty": {
+      "message": "Чтобы что-то заработало, нужно что-то написать:)"
+  },
+  "pageAboutText": {
+      "message": "<p class='text-justify text-muted'>В случае крайней или при иной необходимости пишите мне.</p><p class='text-justify text-primary'>А если Вы хотите оформить задачу на гитхабе милости прошу:</p><span class='text-capitalize text-warning'>---></span><a href='https://github.com/zaplitnyak/spellit/issues' target='blank'>Запилить задачу!</a><span class='text-capitalize text-warning'><---</span>"
+  },
+  "pageTopText": {
+      "message": "Я пока не готова! Милый, еще пять минуточеk:*"
+  },
+  "playBackUrlMessage": {
+      "message": "Бесплатная ссылка для прослушивания"
+  }
+}

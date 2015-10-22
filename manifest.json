@@ -1,12 +1,16 @@
 {
     "manifest_version": 2,
 
-    "name": "Скажи это!",
-    "version": "0.0.4",
-    "version_name": "0.0.4 open beta",
-    "author": "Andrew Zaplitnyak",
-    "description": "Мы преобразуем ваш текст в Google Translate речь!",
+    "default_locale": "ru",
 
+    "name": "__MSG_appName__",
+    "short_name": "__MSG_appShortName__",
+
+    "version": "0.0.9",
+    "version_name": "0.0.9 riborn",
+
+    "author": "Andrew Zaplitnyak",
+    "description": "__MSG_appDescription__",
 
     "icons": {
         "16": "16x16.png",
@@ -19,7 +23,7 @@
     ],
 
     "browser_action": {
-        "default_title": "Cкажи мне это",
+        "default_title": "__MSG_defaultTitle__",
         "default_icon": "48x48.png",
         "default_popup": "popup.html"
     }

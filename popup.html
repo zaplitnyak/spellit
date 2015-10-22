@@ -10,55 +10,69 @@
     <!-- Custom CSS -->
     <link href="css/spellit.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
 </head>
 <body class="splt-wrapper">
-    <div class="container-fluid">
-        <div class="row splt-row-float">
-            <p class="splt-heading splt-float-left">Скажи это!</p>
-            <p class="splt-subheading splt-right">На случай важных и не очень переговоров. Ну, позязя, скажи...</p>
+    <div class="splt-container container-fluid">
+        <div class="row">
+            <div class="col-xs-6">
+                <p class="splt-heading" data-t-name="popupTitle"></p>
+            </div>
+            <div class="col-xs-3">
+                <a href="/tenLast.html" class="text-info" data-t-name="menuRecent" title=""></a>
+            </div>
+            <div class="col-xs-3">
+                <a href="/tenTop.html" class="text-danger" data-t-name="menuTop" title=""></a>
+            </div>
         </div>
         <div class="row">
             <form name="sentMessage" id="spellItForm">
                 <div>
-                    <textarea class="form-control" placeholder="Ваше сообщение *" id="message" data-validation-required-message="WTF? Может ты что-то напишешь?"></textarea>
-                    <div class="help-block text-danger splt-no-margin"></div>
+                    <textarea class="form-control" placeholder="Ваше сообщение *" id="message" maxlength="196" data-t-name="textAreaMessage"></textarea>
+                    <div class="help-block text-danger splt-no-margin splt-hide"></div>
                 </div>
-                <div class="splt-buttons-row">
-                    <button class="glyphicon glyphicon-volume-up btn" type="submit" title="Озвучить">Озвучить!</button>
-                    <button id="repeat-button" class="glyphicon glyphicon-repeat btn" aria-hidden="true" type="button" title="Повторить"></button>
-                    <a id="download-button" class="glyphicon glyphicon-save btn" aria-hidden="true" href="javascript: void(0);" title="Сохранить"></a>
-                    <a href="/tenLast.html" class="text-info" title="Недавние">Недавние</a>
-                    <a href="/tenTop.html" class="text-danger" title="Топчик"><s>Топчик</s></a>
+                <div class="row splt-buttons-row">
+                    <div class="col-xs-8">
+                        <button id="start-button" class="glyphicon glyphicon-volume-up btn" type="submit" data-t-name="buttonStart" title=""></button>
+                        <button id="stop-button" class="glyphicon glyphicon-volume-off btn splt-hide" type="button" data-t-name="buttonStop" title=""></button>
+                        <button id="repeat-button" class="glyphicon glyphicon-repeat btn" aria-hidden="true" type="button" data-t-name="buttonRepeat" title="" disabled="disabled"></button>
+                    </div>
+                    <div class="col-xs-4">
+                        <a id="download-button" class="glyphicon glyphicon-save btn" aria-hidden="true" href="javascript: void(0);" data-t-name="buttonDownload" title=""></a>
+                    </div>
                 </div>
             </form>
             <div id="success"></div>
         </div>
     </div>
 
-    <iframe id="playBack" class="hide" ></iframe>
+    <audio id="playBack"></audio>
 
     <footer>
         <div>
             <div>
-                <span class="copyright">Copyright &copy; <a target="_blank" href="https://vk.com/id0" title="Я это Ты}:)">Andrew Zaplitnyak</a></span>
+                <span>Copyright &copy; <a target="_blank" href="https://vk.com/id0" title="Я это Ты}:)">Andrew Zaplitnyak</a></span>
             </div>
             <div>
                 <span class="text-muted">Earth 2015</span>
             </div>
         </div>
     </footer>
+    <!-- JS Templates START -->
+    <script id="successTemplate" type="text/x-jsrender">
+        <div class='alert alert-success splt-success'>
+            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+            ${message}
+        </div>
+    </script>
+    <!-- JS Templates END -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <!-- Custom js -->
+    <script src="js/exceptions.js"></script>
+    <script src="js/page.js"></script>
     <script src="js/popup.js"></script>
 </body>
 

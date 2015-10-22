@@ -19,8 +19,22 @@ textarea {
     overflow-x: hidden;
 }
 
+#message {
+    height: 230px;
+    max-height: 455px;
+}
+
+#start-button {
+    width: 90px;
+}
+
+#stop-button {
+    width: 90px;
+}
+
 .splt-wrapper {
     width: 350px;
+    height: 310px;
 }
 
 .splt-heading {
@@ -49,13 +63,12 @@ textarea {
 
 .splt-float-left {
     float: left;
-    width: 100px;
+    width: 30%;
 }
 
 .splt-float-right {
     float: right;
-    width: 250px;
-    text-align: right;
+    width: 70%;
 }
 
 .splt-buttons-row {
@@ -66,14 +79,15 @@ textarea {
     margin:0px !important;
 }
 
-.splt-about {
-    height: 310px; /* height of all possible element on mainpage */
-}
-
 .splt-success {
     margin: 10px 0 0 0;
 }
 
-.splt-tenlast {
-    height: 310px; /* height of all possible element on mainpage */
+.splt-container {
+    min-height: 100%;
+    height: auto !important;
+}
+
+.splt-hide {
+    display: none;
 }

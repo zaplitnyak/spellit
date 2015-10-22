@@ -1,0 +1,64 @@
+{
+  "appName": {
+    "message": "Spell It!",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appShortName": {
+    "message": "Spell It!"
+  },
+  "appDescription": {
+    "message": "We transform your text into Google Translate voice!",
+    "description":"The description of the application, displayed in the web store."
+  },
+  "defaultTitle": {
+    "message": "Just Spell It, babe!"
+  },
+  "popupTitle": {
+    "message": "Spell It!"
+  },
+  "aboutTitle": {
+    "message": "A boat"
+  },
+  "recentTitle": {
+    "message": "Recent"
+  },
+  "topTitle": {
+    "message": "Top'чик"
+  },
+  "menuRecent": {
+    "message": "Recent"
+  },
+  "menuTop": {
+    "message": "Top"
+  },
+  "buttonBack": {
+    "message": "Back to the future!"
+  },
+  "buttonStart": {
+    "message": "Play"
+  },
+  "buttonStop": {
+    "message": "Stop"
+  },
+  "buttonRepeat": {
+    "message": "Repeat"
+  },
+  "buttonDownload": {
+    "message": "Download"
+  },
+  "textAreaMessage": {
+      "message": "Your message, sir!"
+  },
+  "formErrorEmpty": {
+      "message": "IMHO, you need to write a message:)"
+  },
+  "pageAboutText": {
+      "message": "<p class='text-justify text-muted'>In case of emergency or for any other reason - email me.</p><p class='text-justify text-primary'>If you want to report some issues on GitHub - make yourself at home:</p><span class='text-capitalize text-warning'>---></span><a href='https://github.com/zaplitnyak/spellit/issues' target='blank'>Click rigth here!</a><span class='text-capitalize text-warning'><---</span>"
+  },
+  "pageTopText": {
+      "message": "I'm not ready yet! Honey, could you wait a little bit more:*"
+  },
+  "playBackUrlMessage": {
+      "message": "Free playback URL"
+  }
+}
