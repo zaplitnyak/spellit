@@ -29,8 +29,8 @@ var RecentPage = (function($){
 
     RecentPage.prototype.init = function (selectors) {
         self.translate($("[data-t-name]"));
-        self.$buttonBack && self.$buttonBack.getElement().empty();
-        
+        self.clearData($("[data-empty]"));
+
         //TODO: Specify class for operations in storage
         chrome.storage.sync.get("recentVoices", function (data) { storageSuccessCallback(data); });
 
