@@ -27,17 +27,17 @@
         <div class="row">
             <form name="sentMessage" id="spellItForm">
                 <div>
-                    <textarea class="form-control" placeholder="Ваше сообщение *" id="message" maxlength="196" data-t-name="textAreaMessage"></textarea>
+                    <textarea class="form-control" placeholder="Ваше сообщение *" id="message" maxlength="196" data-t-name="textAreaMessage" data-empty></textarea>
                     <div class="help-block text-danger splt-no-margin splt-hide"></div>
                 </div>
                 <div class="row splt-buttons-row">
                     <div class="col-xs-8">
-                        <button id="start-button" class="glyphicon glyphicon-volume-up btn" type="submit" data-t-name="buttonStart" title=""></button>
-                        <button id="stop-button" class="glyphicon glyphicon-volume-off btn splt-hide" type="button" data-t-name="buttonStop" title=""></button>
-                        <button id="repeat-button" class="glyphicon glyphicon-repeat btn" aria-hidden="true" type="button" data-t-name="buttonRepeat" title="" disabled="disabled"></button>
+                        <button id="start-button" class="glyphicon glyphicon-volume-up btn" type="submit" data-t-name="buttonStart" title="" data-empty></button>
+                        <button id="stop-button" class="glyphicon glyphicon-volume-off btn splt-hide" type="button" data-t-name="buttonStop" title="" data-empty></button>
+                        <button id="repeat-button" class="glyphicon glyphicon-repeat btn" aria-hidden="true" type="button" data-t-name="buttonRepeat" title="" disabled="disabled" data-empty></button>
                     </div>
                     <div class="col-xs-4">
-                        <a id="download-button" class="glyphicon glyphicon-save btn" aria-hidden="true" href="javascript: void(0);" data-t-name="buttonDownload" title=""></a>
+                        <a id="download-button" class="glyphicon glyphicon-save btn" aria-hidden="true" href="javascript: void(0);" data-t-name="buttonDownload" title="" data-empty></a>
                     </div>
                 </div>
             </form>

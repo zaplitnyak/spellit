@@ -44,12 +44,13 @@ var PopupPage = (function($){
 
         self.translate($("[data-t-name]"));
         self.$playBackAudio.getElement().trigger("clear");
-        self.$messageTextArea.getElement().empty();
         self.$messageTextArea.getElement().focus();
 
         if (self.message) {
             restoreFromRecent(self.message);
         }
+
+        self.clearData($("[data-empty]"));
     }
 
     var playBackAudioConfig = {
@@ -187,3 +188,4 @@ var PopupPage = (function($){
 }(window.jQuery));
 
 var pagePopup = new PopupPage();
+
