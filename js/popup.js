@@ -7,7 +7,7 @@ var PopupPage = (function($){
     var self;
 
     /**
-     * @type string
+     * @type SpeechSynthesisUtterance
      */
     var message;
 
@@ -20,6 +20,7 @@ var PopupPage = (function($){
         $startButton,
         $stopButton,
         $repeatButton,
+        $langSelect,
         $appNameHeader;
 
     /**
@@ -27,23 +28,21 @@ var PopupPage = (function($){
      */
     function PopupPage(selectors) {
        self = this;
-       self.message = self.getUrlParameterByName("text");
+       self.message = new SpeechSynthesisUtterance(self.getUrlParameterByName("text"));
 
        self.init(selectors);
     }
 
     //TODO: do smth with this temporary code
     PopupPage.prototype.init = function (selectors) {
-        self.$playBackAudio = new jQueryElement(playBackAudioConfig);
         self.$stopButton = new jQueryElement(stopButtonConfig);
         self.$startButton = new jQueryElement(startButtonConfig);
-        self.$repeatButton = new jQueryElement(repeatButtonConfig);
         self.$appNameHeader = new jQueryElement(appNameHeaderConfig);
         self.$spltForm = new jQueryElement(spltFormConfig);
         self.$messageTextArea = new jQueryElement(textAreaConfig);
+        self.$langSelect = new jQueryElement(langSelectConfig);
 
         self.translate($("[data-t-name]"));
-        self.$playBackAudio.getElement().trigger("clear");
         self.$messageTextArea.getElement().focus();
 
         if (self.message) {
@@ -51,20 +50,11 @@ var PopupPage = (function($){
         }
 
         self.clearData($("[data-empty]"));
+        populateLanguages();
+        self.message.onend = function(e) {
+              stopPlayback();
+        };
     }
-
-    var playBackAudioConfig = {
-        selector: "audio#playBack",
-        events: {
-            clear: function () {
-                self.$playBackAudio.getElement().prop("src", "");
-                stopPlayback();
-            },
-            ended: function () {
-                stopPlayback();
-            }
-        }
-    };
 
     var stopButtonConfig = {
         selector: "#stop-button",
@@ -77,15 +67,6 @@ var PopupPage = (function($){
 
     var startButtonConfig = {
         selector: "#start-button"
-    };
-
-    var repeatButtonConfig = {
-        selector: "#repeat-button",
-        events: {
-            click: function () {
-                startPlayback();
-            }
-        }
     };
 
     var appNameHeaderConfig = {
@@ -113,6 +94,11 @@ var PopupPage = (function($){
         }
     };
 
+    var langSelectConfig = {
+        selector: "#langs",
+    };
+
+
     var spltFormConfig = {
         selector: "#spellItForm",
         events: {
@@ -127,39 +113,53 @@ var PopupPage = (function($){
 
                     return false;
                 }
-                var generatedUrl = secretUrl + "&textlen=" + userText.length + "&q=" + encodeURIComponent(userText);
+                self.message.text = userText;
+                self.message.lang = self.$langSelect.getElement().val();
+                startPlayback();
+                /*var generatedUrl = secretUrl + "&textlen=" + userText.length + "&q=" + encodeURIComponent(userText);
                 self.$playBackAudio.getElement().prop('src', generatedUrl);
                 self.$repeatButton.getElement().prop('disabled', false);
-                startPlayback();
                 var resultMessage = "<strong>" + self.t("playBackUrlMessage") + ": </strong><br/>" +
                         "<a target=\"_blank\" href=\"" + generatedUrl + "\">" + generatedUrl + "</a>";
                 self.successNotification(resultMessage);
                 $("#download-button").prop("href", generatedUrl);
-                $("#download-button").prop("download", userText.substring(0, 10) + ".mp3");
+                $("#download-button").prop("download", userText.substring(0, 10) + ".mp3");*/
                 self.saveToRecentVoices(userText);
             }
         }
     };
 
     function startPlayback() {
-        self.$playBackAudio.getElement().trigger("play");
         self.$startButton.getElement().hide();
         self.$stopButton.getElement().show();
+        window.speechSynthesis.speak(self.message);
     }
 
     function stopPlayback() {
-        self.$playBackAudio.getElement().trigger("pause");
-        self.$playBackAudio.getElement().prop("currentTime", 0);
         self.$stopButton.getElement().hide();
         self.$startButton.getElement().show();
+        window.speechSynthesis.cancel();
     }
 
     function restoreFromRecent(message) {
-        self.$messageTextArea.getElement().text(message);
+        self.$messageTextArea.getElement().text(message.text);
         self.$spltForm.getElement().submit();
         var currentState = window.history.state;
         window.history.replaceState(currentState, "", "/popup.html");
     }
+
+    function populateLanguages() {
+        var voices = window.speechSynthesis.getVoices();
+        var options = '';
+        for (var voice in voices) {
+            options += '<option value="' + voice.lang + '">' + voice.name + "</option>";
+        }
+        if (!options) {
+            options = '<option value="en-US">English</option><option value="ru-RU">Ruzkiy</option>';
+        }
+        self.$langSelect.getElement().append(options);
+    }
+
 
     PopupPage.prototype.saveToRecentVoices = function (message) {
         chrome.storage.sync.get("recentVoices", function (data) {
