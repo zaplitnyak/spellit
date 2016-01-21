@@ -18,7 +18,7 @@ var TopPage = (function($){
 
     TopPage.prototype.init = function () {
         self.translate($("[data-t-name]"));
-        self.$buttonBack && self.$buttonBack.getElement().empty();
+        self.clearData($("[data-empty]"));
     }
 
     return TopPage;

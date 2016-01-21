@@ -23,7 +23,8 @@ var AboutPage = (function($){
 
     AboutPage.prototype.init = function (selectors) {
         self.translate($("[data-t-name]"));
-        self.$buttonBack && self.$buttonBack.getElement().empty();
+        self.clearData($("[data-empty]"));
+
         self.$divContent = new jQueryElement(selectors.divContent);
         self.$divContent.getElement().html(self.t("pageAboutText"));
     }

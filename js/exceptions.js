@@ -11,7 +11,7 @@ var CommonException = (function () {
         self.message = message;
         self.name = (name !== undefined) ? name : CommonException.name;
     }
-    
+
     CommonException.prototype.toString = function () {
         return self.name + ": " + self.message;
     }

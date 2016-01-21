@@ -92,6 +92,17 @@ var jQueryPage = (function ($) {
         });
     };
 
+    /**
+     * @param array[jQuery]|jQuery elements
+     */
+    jQueryPage.prototype.clearData = function (elements) {
+        var $elements = (elements.length !== undefined) ? elements : [elements];
+
+        $.each($elements, function() {
+            $(this).empty();
+        });
+    }
+
     return jQueryPage;
 }(window.jQuery));
 
@@ -109,7 +120,7 @@ var SubordinatePage = (function ($) {
      * @type SubordinatePage Represent this in callbacks
      */
     var self;
-    
+
     var $buttonBack;
 
     /**
@@ -127,7 +138,7 @@ var SubordinatePage = (function ($) {
             self.$buttonBack = new jQueryElement(buttonBackConfig);
         }
     }
-    
+
     var buttonBackConfig = {
         events: {
             click: function () {
@@ -169,7 +180,7 @@ var jQueryElement = (function ($) {
 
     /**
      * Constructor
-     * 
+     *
      * @param object|string config
      */
     function jQueryElement(config) {
@@ -218,3 +229,4 @@ var jQueryElement = (function ($) {
 
     return jQueryElement;
 }(window.jQuery));
+
